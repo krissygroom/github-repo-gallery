@@ -11,6 +11,7 @@ body {
     background-color: whitesmoke;
     color: #333;
     font-size: 16px;
+    line-height: 24px;
 }
 
 .hide {
@@ -144,8 +145,13 @@ ul {
     margin-top: 1em;
     padding: 1em;
     margin-bottom: 1em;
-    border: 2px solid #483978;
+    border: 2px solid #9b8dc9;
 }
+
+.filter-repos:focus {
+    outline: none !important;
+    border: 2px solid #9b8dc9;
+  }
 
 section.repo-data {
     background-color: #fff;

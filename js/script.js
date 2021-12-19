@@ -11,6 +11,12 @@ const reposSection = document.querySelector(".repos");
 // Section where individual repo data will appear
 const repoData = document.querySelector(".repo-data");
 
+// Back to repo gallery button
+const btnBackToRepo = document.querySelector(".view-repos");
+
+// Search field to filter repos
+const filterInput = document.querySelector(".filter-repos");
+
 // Github username
 const username = "krissygroom";
 
@@ -71,6 +77,8 @@ async function getRepos() {
 
 // Display info about each repo
 function displayRepos(repos) {
+    // display filter input
+    filterInput.classList.remove("hide");
     repos.forEach(repo => {
         let li = document.createElement('li');
         li.setAttribute("class", "repo");
@@ -124,7 +132,36 @@ function displayRepoInfo(repoInfo, languages) {
     repoData.append(repoInfoDiv);
     repoData.classList.remove("hide");
     reposSection.classList.add("hide");
+    btnBackToRepo.classList.remove("hide");
 };
+
+
+// Click event to the back button
+btnBackToRepo.addEventListener("click", function() {
+    repoData.classList.add("hide");
+    reposSection.classList.remove("hide");
+    btnBackToRepo.classList.add("hide");
+});
+
+
+// Input event on filter input field
+filterInput.addEventListener("input", function(e) {
+    const inputValue = e.target.value;
+
+    // select all repos that match search input
+    const repos = document.querySelectorAll(".repo");
+    const inputLower = inputValue.toLowerCase();
+
+    // check if lowercase repo name matches input
+    for (const repo of repos) {
+        const repoLower = repo.innerText.toLowerCase();
+        if (repoLower.includes(inputLower)) {
+            repo.classList.remove("hide");
+        } else {
+            repo.classList.add("hide");
+        };
+    };
+});
 
 
 // *** FUNCTION CALLS ***
