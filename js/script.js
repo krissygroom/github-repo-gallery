@@ -30,7 +30,6 @@ async function getGithubInfo() {
         const response = await fetch(apiUrl);
         // convert response into json object
         const userInfo = await response.json();
-        // console.log(userInfo);
         displayUserInfo(userInfo);
     } catch (error) {
         alert(error);
@@ -57,7 +56,6 @@ function displayUserInfo(userInfo) {
     </div>
     `;
     overview.append(userDiv);
-
 };
 
 
